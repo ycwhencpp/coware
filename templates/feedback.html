@@ -1,0 +1,60 @@
+{% extends "layout.html" %} {% block title %} Feedback {% endblock %} {% block main %}
+<div>
+    <form action="/feedback" method="post">
+        <div>
+
+
+
+            <div>
+                <h3 style="font-weight:600; font-size:2.2rem;">How do you rate our website</h3>
+                <br>
+                <label class="radio-inline"><input type="radio" name="option" value="Excellent"> Excellent</label>
+                <label class="radio-inline"><input type="radio" name="option" value="Very Good"> Very good</label>
+                <label class="radio-inline"><input type="radio" name="option" value="Good"> Good</label>
+                <label class="radio-inline"><input type="radio" name="option" value="Fair"> Fair</label>
+                <label class="radio-inline"><input type="radio" name="option" value="Poor"> Poor</label>
+
+            </div>
+        </div>
+
+        <br>
+
+        <form>
+            <div>
+                <h3>Your Message*</h3>
+                <textarea id="message" required="" placeholder="Write your message here" rows="5" cols="50" name="feedback"></textarea>
+            </div>
+
+            <div class="feedback_button">
+                <button class="btn btn-primary" style="width: 10%; position: center;" type="submit" {% if session.user_id %} "" {% else %} disabled {% endif %}>Post</button>
+            </div>
+        </form>
+    </form>
+    <br>
+    <div class="message">
+        {% if session.user_id %}
+        <p></p>
+        {% else %}
+        <p class="message">Please login before submitting feedback <b><a class="message" href="/login">Log in</a></b></p>
+        {% endif %}
+
+    </div>
+    <h4 class="feedback">Users feedback</h4>
+    <div class="feedback_total">
+        <table id="InfoTable" class="center">
+            {% for feedback in feedback_all %}
+            <tr>
+                <th>{{feedback.username|upper}}</th>
+                <td>rated
+                    <span {% if (feedback.rating=="Excellent" or feedback.rating=="Very Good" or feedback.rating=="Good" ) %} class="rating_good" {% else %} class="rating_bad" {% endif %}>
+                        <b>{{feedback.rating}}</span></b>
+                </td>
+                <td class="feedback_text">{{feedback.feedback}}</td>
+                <td> {{feedback.date_time}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
