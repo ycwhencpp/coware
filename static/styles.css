@@ -248,7 +248,7 @@ img {
 }
 
 @media screen and (max-width:767px) {
-    .news-data{
+    .bd-grid{
         display:flex;
         flex-direction: column;
     }
