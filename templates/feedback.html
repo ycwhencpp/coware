@@ -2,9 +2,6 @@
 <div>
     <form action="/feedback" method="post">
         <div>
-
-
-
             <div>
                 <h3 style="font-weight:600; font-size:2.2rem;">How do you rate our website</h3>
                 <br>
@@ -41,7 +38,7 @@
     </div>
     <h4 class="feedback">Users feedback</h4>
     <div class="feedback_total">
-        <table id="InfoTable" class="center">
+        <table id="InfoTable" class="center table">
             {% for feedback in feedback_all %}
             <tr>
                 <th>{{feedback.username|upper}}</th>
