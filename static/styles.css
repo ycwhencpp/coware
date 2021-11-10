@@ -246,3 +246,22 @@ img {
 .cases {
     color: gray;
 }
+
+@media screen and (max-width:767px) {
+    .news-data{
+        display:flex;
+        flex-direction: column;
+    }
+    .news_content{
+        margin-bottom: 150px;
+    }
+    .news_title {
+        font-size: 1.35rem;
+    }
+    .news_content p {
+        font-size: 1.15rem;
+        margin-top: 0;
+        color: #a4a5a5;
+        padding-bottom: 100px;
+    }
+}
